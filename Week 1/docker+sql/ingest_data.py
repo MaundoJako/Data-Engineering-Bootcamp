@@ -3,9 +3,8 @@
 
 import os
 import argparse
-
 from time import time
-
+import pyarrow
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -18,6 +17,7 @@ def main(params):
     db = params.db
     table_name = params.table_name
     url = params.url
+    csv_name = "output.csv.gz"
     
     # the backup files are gzipped, and it's important to keep the correct extension
     # for pandas to be able to open the file
