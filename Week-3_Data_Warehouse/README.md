@@ -1,4 +1,5 @@
 #QUESTION 1
+
 SELECT COUNT(*) AS record_count
 FROM `praxis-wall-411617.week3_green.bq_green_2022`;
 
@@ -10,6 +11,7 @@ OPTIONS (
   );
 
 #QUESTION 2
+
 SELECT COUNT(DISTINCT PULocationID) AS PULocationID_count
 FROM `praxis-wall-411617.week3_green.external_green_tripdata`;
 
