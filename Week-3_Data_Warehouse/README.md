@@ -18,7 +18,7 @@ FROM `praxis-wall-411617.week3_green.external_green_tripdata`;
 SELECT COUNT(DISTINCT PULocationID) AS PULocationID_count
 FROM `praxis-wall-411617.week3_green.bq_green_2022`;
 
-# Answer - 0 MB for the External Table and 6.41MB for the Materialized Table
+#Answer - 0 MB for the External Table and 6.41MB for the Materialized Table
 
 
 # QUESTION 3
@@ -30,7 +30,7 @@ WHERE fare_amount = 0;
 
 # QUESTION 4
 
-# Have to change datatype from int to timestamp: will do so by creating a new table
+#Have to change datatype from int to timestamp: will do so by creating a new table
 
 CREATE OR REPLACE TABLE `praxis-wall-411617.week3_green.bq_green_2022_timestamps`
 AS
@@ -46,9 +46,9 @@ WHERE
   AND lpep_dropoff_datetime >= 0
   AND lpep_dropoff_datetime <= 2534022143990000000;
 
-# Got stuck above had had to turn them into a string and ammend the timing abit to get it right with some help from gpt. 
+#Got stuck above had had to turn them into a string and ammend the timing abit to get it right with some help from gpt. 
 
-# Below reconverts them into the correct TIMESTAMP... can now move on.
+#Below reconverts them into the correct TIMESTAMP... can now move on.
 
 CREATE OR REPLACE TABLE `praxis-wall-411617.week3_green.bq_green_2022_timestamps`
 AS
@@ -60,7 +60,7 @@ FROM
   `praxis-wall-411617.week3_green.bq_green_2022_timestamps`;
 
 
-# Creating the partitioned and clustered
+#Creating the partitioned and clustered
 
 CREATE OR REPLACE TABLE `praxis-wall-411617.week3_green.part_clust_green_2022`
 PARTITION BY
@@ -80,13 +80,13 @@ WHERE
 
 
 # QUESTION 6
-# = GCP Bucket
+#= GCP Bucket
 
 
 # QUESTION 7
-# = False
+#= False
 
 # QUESTION 8 (BONUS)
 SELECT COUNT(*) from `week3_green.part_clust_green_2022`
-# = answer - 0, partitioning and clustering reduces load to read data.
+#= answer - 0, partitioning and clustering reduces load to read data.
 
